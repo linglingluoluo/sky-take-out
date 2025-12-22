@@ -26,4 +26,9 @@ public interface EmployeeMapper {
 
     //分页查询
     List<Employee> pageQuery(EmployeePageQueryDTO employeePageQueryDTO);
+    //更新用户信息
+    void update(Employee employee);
+    //根据id查询用户信息
+    @Select("select * from employee where id = #{id}")
+    Employee getById(Long id);
 }
