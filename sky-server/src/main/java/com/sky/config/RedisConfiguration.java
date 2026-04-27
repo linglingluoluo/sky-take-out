@@ -21,7 +21,13 @@ public class RedisConfiguration {
         //设置redis key的序列化器
         redisTemplate.setKeySerializer(new StringRedisSerializer());
         //设置redis value序列化器
-        redisTemplate.setValueSerializer(new GenericJackson2JsonRedisSerializer());
+        //加了下面这行代码会报错:Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed:
+        // org.springframework.data.redis.serializer.SerializationException:
+        // Could not write JSON: Java 8 date/time type `java.time.LocalDateTime` not supported by default:
+        // add Module "com.fasterxml.jackson.datatype:jackson-datatype-jsr310" to enable handling
+        // (or disable `MapperFeature.REQUIRE_HANDLERS_FOR_JAVA8_TIMES`)
+        // (through reference chain: java.util.ArrayList[0]->com.sky.vo.DishVO["updateTime"])] with root cause
+//        redisTemplate.setValueSerializer(new GenericJackson2JsonRedisSerializer());
         return redisTemplate;
     }
 }
