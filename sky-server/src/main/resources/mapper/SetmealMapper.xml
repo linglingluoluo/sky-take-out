@@ -75,4 +75,9 @@
         </where>
     </select>
 
+    <select id="getSetmealOverView" resultType="java.util.HashMap">
+        select status,ifnull(count(status), 0) num from setmeal
+        group by status
+    </select>
+
 </mapper>

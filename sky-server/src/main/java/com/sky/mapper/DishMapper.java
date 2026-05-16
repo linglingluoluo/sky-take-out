@@ -9,6 +9,7 @@ import com.sky.vo.DishVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -59,4 +60,6 @@ public interface DishMapper {
     List<Dish> list(Dish dish);
 
     List<Dish> getBySetmealId(Long setmealId);
+
+    List<HashMap<String, Object>> getDishOverView();
 }

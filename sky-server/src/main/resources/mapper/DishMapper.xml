@@ -79,4 +79,9 @@
         order by create_time desc
     </select>
 
+    <select id="getDishOverView" resultType="java.util.HashMap">
+        select status,ifnull(count(status),0) num from dish
+        group by status
+    </select>
+
 </mapper>
